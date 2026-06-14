@@ -11,28 +11,22 @@ class ResidentialBillingEngine implements BillingService {
         return (energyCharge + fixedCharge) - solarCredit;
     }
 
-    @Override
-    public void printBill(Consumer c, TariffRate r) {
+    public BillRecord createBillRecord(Consumer c, TariffRate r) {
         double energy = c.calculateEnergyCharge(r);
         double fixed = c.getFixedCharge(r);
         double solar = c.getSolarExportUnits() * r.getSolarExportRate();
         double net = calculateTotalBill(c, r);
+        String tariffType = c instanceof TOUConsumer ? "Time-of-Use (TOU)" : "Standard Domestic";
 
-        System.out.println("\n========= MONTHLY ELECTRICITY BILL =========");
-        System.out.println("Consumer: " + c.getName() + " (" + c.getConsumerID() + ")");
+        return new BillRecord(c.getConsumerID(), c.getName(), tariffType, energy, fixed, solar, net);
+    }
 
-        if (c instanceof TOUConsumer) {
-            System.out.println("Tariff Type: Time-of-Use (TOU)");
-        } else {
-            System.out.println("Tariff Type: Standard Domestic");
-        }
+    @Override
+    public void printBill(Consumer c, TariffRate r) {
+        printBill(createBillRecord(c, r));
+    }
 
-        System.out.println("--------------------------------------------");
-        System.out.printf("Energy Charge:         Rs. %10.2f%n", energy);
-        System.out.printf("Fixed Charge:          Rs. %10.2f%n", fixed);
-        System.out.printf("Solar Credit:         -Rs. %10.2f%n", solar);
-        System.out.println("--------------------------------------------");
-        System.out.printf("NET PAYABLE AMOUNT:    Rs. %10.2f%n", net);
-        System.out.println("============================================\n");
+    public void printBill(BillRecord record) {
+        System.out.println("\n" + record.toFormattedString());
     }
 }

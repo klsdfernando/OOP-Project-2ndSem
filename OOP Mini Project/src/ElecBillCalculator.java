@@ -5,6 +5,8 @@ public class ElecBillCalculator {
         Scanner scanner = new Scanner(System.in);
         TariffRate rates = new TariffRate();
         ResidentialBillingEngine engine = new ResidentialBillingEngine();
+        BillHistoryManager historyManager = new BillHistoryManager();
+        BillExporter billExporter = new BillExporter();
 
         System.out.println("--- Team 22 Electricity Bill Calculator ---");
 
@@ -41,10 +43,29 @@ public class ElecBillCalculator {
 
         } else {
             System.out.println("Invalid choice. Exiting.");
+            scanner.close();
             System.exit(0);
         }
 
-        engine.printBill(consumer, rates);
+        BillRecord record = engine.createBillRecord(consumer, rates);
+        engine.printBill(record);
+
+        historyManager.addBill(record);
+        String exportPath = billExporter.export(record);
+
+        System.out.println("Bill added to history. Total bills this session: " + historyManager.getBillCount());
+        if (exportPath != null) {
+            System.out.println("Bill exported to: " + exportPath);
+        } else {
+            System.out.println("Warning: Bill could not be exported to file.");
+        }
+
+        scanner.nextLine();
+        System.out.print("\nView bill history? (y/n): ");
+        String viewHistory = scanner.nextLine().trim();
+        if (viewHistory.equalsIgnoreCase("y")) {
+            historyManager.printHistory();
+        }
 
         scanner.close();
     }
