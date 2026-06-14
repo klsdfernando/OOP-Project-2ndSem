@@ -27,13 +27,13 @@ Rates are based on the PUCSL approved tariff (effective 15 Oct 2025). See `Annex
 
 ```
 OOP Mini Project/src/
-├── ElecBillCalculator.java        # Main entry point
-├── TariffRate.java                # Tariff rates
-├── Consumer.java                  # Abstract base class
-├── StandardConsumer.java          # Slab billing
-├── TOUConsumer.java               # TOU billing
-├── BillingService.java            # Billing interface
-└── ResidentialBillingEngine.java  # Bill engine
+├── ElecBillCalculator.java   
+├── TariffRate.java        
+├── Consumer.java                
+├── StandardConsumer.java     
+├── TOUConsumer.java          
+├── BillingService.java      
+└── ResidentialBillingEngine.java 
 ```
 
 ---
