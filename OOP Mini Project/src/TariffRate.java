@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class TariffRate {
     private final double domesticSlab1Rate = 4.50;
     private final double domesticSlab2Rate = 8.00;
@@ -12,7 +14,7 @@ public class TariffRate {
     private final double TOUDayRate = 35.00;
     private final double TOUPeakRate = 67.00;
     private final double TOUOffPeakRate = 21.00;
-    private final double TOUFixedCharge = 2100.00; // [cite: 34]
+    private final double TOUFixedCharge = 2100.00;
 
     private final double solarExportRate = 25.00;
 

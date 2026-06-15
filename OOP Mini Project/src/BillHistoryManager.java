@@ -1,17 +1,16 @@
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BillHistoryManager {
     private final List<BillRecord> history = new ArrayList<>();
     private final Path historyFile = Paths.get("bill_history.txt");
 
-    public void addBill(BillRecord record) {
+    public void addBill(BillRecord record, boolean confirmSave) {
         history.add(record);
         appendToFile(record);
     }
@@ -24,7 +23,7 @@ public class BillHistoryManager {
         return history.size();
     }
 
-    public void printHistory() {
+    public void printHistory(boolean showDetails) {
         if (history.isEmpty()) {
             System.out.println("\nNo bills in history yet.");
             return;

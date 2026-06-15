@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class TOUConsumer extends Consumer {
     private double dayConsumption;
     private double peakConsumption;
@@ -20,5 +22,9 @@ class TOUConsumer extends Consumer {
     @Override
     public double getFixedCharge(TariffRate rates) {
         return rates.getTOUFixedCharge();
+    }
+
+    public double getTotalConsumption(String unitLabel) {
+        return dayConsumption + peakConsumption + offPeakConsumption;
     }
 }

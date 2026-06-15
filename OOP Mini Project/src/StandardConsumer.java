@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 class StandardConsumer extends Consumer {
     private double totalConsumption;
 
@@ -8,7 +10,10 @@ class StandardConsumer extends Consumer {
 
     @Override
     public double calculateEnergyCharge(TariffRate rates) {
-        double units = totalConsumption;
+        return calculateSlabCharge(totalConsumption, rates, false);
+    }
+
+    private double calculateSlabCharge(double units, TariffRate rates, boolean debugMode) {
         double charge = 0;
 
         if (units <= 60) {

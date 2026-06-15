@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ElecBillCalculator {
@@ -48,10 +49,10 @@ public class ElecBillCalculator {
         }
 
         BillRecord record = engine.createBillRecord(consumer, rates);
-        engine.printBill(record);
+        engine.printBill(record, rates);
 
-        historyManager.addBill(record);
-        String exportPath = billExporter.export(record);
+        historyManager.addBill(record, true);
+        String exportPath = billExporter.export(record, "bills");
 
         System.out.println("Bill added to history. Total bills this session: " + historyManager.getBillCount());
         if (exportPath != null) {
@@ -64,7 +65,7 @@ public class ElecBillCalculator {
         System.out.print("\nView bill history? (y/n): ");
         String viewHistory = scanner.nextLine().trim();
         if (viewHistory.equalsIgnoreCase("y")) {
-            historyManager.printHistory();
+            historyManager.printHistory(true);
         }
 
         scanner.close();

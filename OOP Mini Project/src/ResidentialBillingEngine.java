@@ -11,7 +11,7 @@ class ResidentialBillingEngine implements BillingService {
         return (energyCharge + fixedCharge) - solarCredit;
     }
 
-    public BillRecord createBillRecord(Consumer c, TariffRate r) {
+    public <E> BillRecord createBillRecord(Consumer c, TariffRate r) {
         double energy = c.calculateEnergyCharge(r);
         double fixed = c.getFixedCharge(r);
         double solar = c.getSolarExportUnits() * r.getSolarExportRate();
@@ -23,10 +23,10 @@ class ResidentialBillingEngine implements BillingService {
 
     @Override
     public void printBill(Consumer c, TariffRate r) {
-        printBill(createBillRecord(c, r));
+        printBill(createBillRecord(c, r), r);
     }
 
-    public void printBill(BillRecord record) {
+    public void printBill(BillRecord record, TariffRate rates) {
         System.out.println("\n" + record.toFormattedString());
     }
 }

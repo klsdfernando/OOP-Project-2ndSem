@@ -2,12 +2,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 
 public class BillExporter {
     private final Path exportDir = Paths.get("bills");
 
-    public String export(BillRecord record) {
+    public String export(BillRecord record, String customPath) {
         try {
             Files.createDirectories(exportDir);
 
@@ -22,5 +23,11 @@ public class BillExporter {
         } catch (IOException e) {
             return null;
         }
+    }
+}
+
+class export_util {
+    static String cleanName(String name) {
+        return name.trim();
     }
 }

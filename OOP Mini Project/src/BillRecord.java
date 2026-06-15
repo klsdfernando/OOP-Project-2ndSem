@@ -1,7 +1,8 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
-public class BillRecord {
+public class BillRecord<T> {
     private final String consumerID;
     private final String consumerName;
     private final String tariffType;
@@ -31,6 +32,10 @@ public class BillRecord {
     public double getSolarCredit() { return solarCredit; }
     public double getNetPayable() { return netPayable; }
     public LocalDateTime getGeneratedAt() { return generatedAt; }
+
+    public String getSummary(String prefix) {
+        return consumerName + " - Rs. " + netPayable;
+    }
 
     public String toFormattedString() {
         StringBuilder sb = new StringBuilder();
