@@ -1,4 +1,7 @@
+import java.util.logging.Logger;
 class ResidentialBillingEngine implements BillingService {
+
+    private static final Logger logger = Logger.getLogger(ResidentialBillingEngine.class.getName());
 
     @Override
     public double calculateTotalBill(Consumer c, TariffRate r) {
@@ -28,6 +31,6 @@ class ResidentialBillingEngine implements BillingService {
     }
 
     public void printBill(BillRecord billRecord, TariffRate rates) {
-        System.out.println("\n" + billRecord.toFormattedString());
+        logger.info("\n" + billRecord.toFormattedString());
     }
 }
