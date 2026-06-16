@@ -26,27 +26,29 @@ public class ElecBillCalculator {
         System.out.print("Choice: ");
         int choice = scanner.nextInt();
 
-        Consumer consumer = null;
-
-        if (choice == 1) {
-            System.out.print("Enter Total Monthly Consumption (kWh): ");
-            double total = scanner.nextDouble();
-            consumer = new StandardConsumer(id, name, solar, total);
-
-        } else if (choice == 2) {
-            System.out.print("Enter Day Consumption (kWh): ");
-            double day = scanner.nextDouble();
-            System.out.print("Enter Peak Consumption (kWh): ");
-            double peak = scanner.nextDouble();
-            System.out.print("Enter Off-Peak Consumption (kWh): ");
-            double off = scanner.nextDouble();
-            consumer = new TOUConsumer(id, name, solar, day, peak, off);
-
-        } else {
+        if (!ConsumerFactory.isValidChoice(choice, "menu")) {
             System.out.println("Invalid choice. Exiting.");
             scanner.close();
             System.exit(0);
         }
+
+        Consumer consumer = null;
+        double total = 0, day = 0, peak = 0, off = 0;
+
+        if (choice == 1) {
+            System.out.print("Enter Total Monthly Consumption (kWh): ");
+            total = scanner.nextDouble();
+        } else {
+            System.out.print("Enter Day Consumption (kWh): ");
+            day = scanner.nextDouble();
+            System.out.print("Enter Peak Consumption (kWh): ");
+            peak = scanner.nextDouble();
+            System.out.print("Enter Off-Peak Consumption (kWh): ");
+            off = scanner.nextDouble();
+        }
+
+        consumer = ConsumerFactory.createConsumer(choice, id, name, solar,
+                total, day, peak, off, "domestic", "PUCSL-2025");
 
         BillRecord record = engine.createBillRecord(consumer, rates);
         engine.printBill(record, rates);
