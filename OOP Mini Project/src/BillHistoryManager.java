@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +24,7 @@ public class BillHistoryManager {
         return history.size();
     }
 
-    public void printHistory(boolean showDetails) {
+    public void printHistory() {
         if (history.isEmpty()) {
             System.out.println("\nNo bills in history yet.");
             return;
