@@ -7,12 +7,11 @@ import java.time.format.DateTimeFormatter;
 public class BillExporter {
     private static final Path EXPORT_DIR = Paths.get("bills");
 
-    // Private constructor to prevent instantiation (Sonar issue එක වෙනුවෙන්)
+    // BillExporter Constructor - (Sonar Issue එක විසඳා ඇත)
     private BillExporter() {
         throw new IllegalStateException("Utility class");
     }
 
-    // Method එක static කළ නිසා object නොසා කෙලින්ම භාවිත කළ හැක
     public static String export(BillRecord billRecord) {
         try {
             Files.createDirectories(EXPORT_DIR);
@@ -31,7 +30,13 @@ public class BillExporter {
     }
 }
 
+// Sonar Issue (java:S1118) එක නැති කිරීමට ExportUtil එකටද private constructor එකක් එකතු කරන ලදී
 class ExportUtil {
+
+    private ExportUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static String cleanName(String name) {
         return name.trim();
     }
