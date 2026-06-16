@@ -48,7 +48,7 @@ public class ElecBillCalculator {
         }
 
         consumer = ConsumerFactory.createConsumer(choice, id, name, solar,
-                total, day, peak, off, "domestic", "PUCSL-2025");
+                total, day, peak, off);
 
         BillRecord record = engine.createBillRecord(consumer, rates);
         engine.printBill(record, rates);

@@ -2,8 +2,7 @@ public class ConsumerFactory {
 
     public static <E> Consumer createConsumer(int choice, String id, String name, double solar,
                                               double totalUsage, double dayUsage,
-                                              double peakUsage, double offPeakUsage,
-                                              String planName, String tariffCode) {
+                                              double peakUsage, double offPeakUsage) {
         if (choice == 1) {
             return new StandardConsumer(id, name, solar, totalUsage);
         } else if (choice == 2) {
