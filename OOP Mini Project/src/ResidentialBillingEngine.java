@@ -1,4 +1,8 @@
+import java.util.logging.Logger;
+
 class ResidentialBillingEngine implements BillingService {
+
+    private static final Logger LOGGER = Logger.getLogger(ResidentialBillingEngine.class.getName());
 
     @Override
     public double calculateTotalBill(Consumer c, TariffRate r) {
@@ -11,7 +15,7 @@ class ResidentialBillingEngine implements BillingService {
         return (energyCharge + fixedCharge) - solarCredit;
     }
 
-    public <E> BillRecord createBillRecord(Consumer c, TariffRate r) {
+    public BillRecord createBillRecord(Consumer c, TariffRate r) {
         double energy = c.calculateEnergyCharge(r);
         double fixed = c.getFixedCharge(r);
         double solar = c.getSolarExportUnits() * r.getSolarExportRate();
@@ -26,7 +30,7 @@ class ResidentialBillingEngine implements BillingService {
         printBill(createBillRecord(c, r), r);
     }
 
-    public void printBill(BillRecord record, TariffRate rates) {
-        System.out.println("\n" + record.toFormattedString());
+    public void printBill(BillRecord billRecord, TariffRate rates) {
+        LOGGER.info("\n" + billRecord.toFormattedString());
     }
 }
