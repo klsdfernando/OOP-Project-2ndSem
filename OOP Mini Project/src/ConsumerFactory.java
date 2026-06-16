@@ -1,9 +1,8 @@
 public class ConsumerFactory {
 
-    public static <E> Consumer createConsumer(int choice, String id, String name, double solar,
+    public static Consumer createConsumer(int choice, String id, String name, double solar,
                                               double totalUsage, double dayUsage,
-                                              double peakUsage, double offPeakUsage,
-                                              String planName, String tariffCode) {
+                                              double peakUsage, double offPeakUsage) {
         if (choice == 1) {
             return new StandardConsumer(id, name, solar, totalUsage);
         } else if (choice == 2) {
@@ -12,12 +11,12 @@ public class ConsumerFactory {
         return null;
     }
 
-    public static boolean isValidChoice(int choice, String source) {
+    public static boolean isValidChoice(int choice) {
         return choice == 1 || choice == 2;
     }
 }
 
-class consumer_type_helper {
+class ConsumerTypeHelper {
     static String getLabel(int choice) {
         if (choice == 1) return "Standard Domestic";
         return "Time-of-Use (TOU)";
