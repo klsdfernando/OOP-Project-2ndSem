@@ -1,19 +1,14 @@
-package billing;
-
-import billing.BillExporter;
-
 import java.util.Scanner;
-
 import java.util.logging.Logger;
 
 public class ElecBillCalculator {
+    private static final Logger logger = Logger.getLogger(ElecBillCalculator.class.getName());
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        private static final Logger logger = Logger.getLogger(ElecBillCalculator.class.getName());
         TariffRate rates = new TariffRate();
         ResidentialBillingEngine engine = new ResidentialBillingEngine();
         BillHistoryManager historyManager = new BillHistoryManager();
-        BillExporter billExporter = new BillExporter();
 
         logger.info("--- Team 22 Electricity Bill Calculator ---");
 
@@ -63,11 +58,15 @@ public class ElecBillCalculator {
         engine.printBill(billRecord, rates);
 
         historyManager.addBill(billRecord);
-        String exportPath = billExporter.export(billRecord);
 
+        // මෙන්න මෙතන තිබුණු "new BillExporter()" පේළිය අයින් කරලා කෙලින්ම static call එක දීලා තියෙනවා:
+        String exportPath = BillExporter.export(billRecord);
+
+        // Logger placeholder formatting නිවැරදි කර ඇත:
         logger.info("Bill added to history. Total bills this session: " + historyManager.getBillCount());
+
         if (exportPath != null) {
-            logger.info("Bill exported to: {}", exportPath);
+            logger.info("Bill exported to: " + exportPath);
         } else {
             logger.info("Warning: Bill could not be exported to file.");
         }
@@ -76,7 +75,8 @@ public class ElecBillCalculator {
         logger.info("\nView bill history? (y/n): ");
         String viewHistory = scanner.nextLine().trim();
         if (viewHistory.equalsIgnoreCase("y")) {
-            historyManager.printHistory(true);
+            // ඔයාගේ BillHistoryManager එකේ printHistory method එකට parameters අවශ්‍ය නැති නිසා එය නිවැරදි කර ඇත:
+            historyManager.printHistory();
         }
 
         scanner.close();
