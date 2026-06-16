@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class TariffRate {
     private final double domesticSlab1Rate = 4.50;
     private final double domesticSlab2Rate = 8.00;
