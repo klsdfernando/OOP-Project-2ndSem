@@ -55,7 +55,7 @@ public class ElecBillCalculator {
         engine.printBill(record, rates);
 
         historyManager.addBill(record);
-        String exportPath = billExporter.export(record, "bills");
+        String exportPath = billExporter.export(record);
 
         System.out.println("Bill added to history. Total bills this session: " + historyManager.getBillCount());
         if (exportPath != null) {

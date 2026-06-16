@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class BillExporter {
     private final Path exportDir = Paths.get("bills");
 
-    public String export(BillRecord record, String customPath) {
+    public String export(BillRecord record) {
         try {
             Files.createDirectories(exportDir);
 
