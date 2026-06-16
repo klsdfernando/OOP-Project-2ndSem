@@ -16,7 +16,7 @@ public class ConsumerFactory {
     }
 }
 
-class consumerTypeHelper {
+class ConsumerTypeHelper {
     static String getLabel(int choice) {
         if (choice == 1) return "Standard Domestic";
         return "Time-of-Use (TOU)";
