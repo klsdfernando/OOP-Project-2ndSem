@@ -1,8 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
-public class BillRecord<T> {
+public class BillRecord {
     private final String consumerID;
     private final String consumerName;
     private final String tariffType;
