@@ -22,3 +22,15 @@ Solar Credit:         -Rs.       0.00
 NET PAYABLE AMOUNT:    Rs.     505.00
 ============================================
 
+========= MONTHLY ELECTRICITY BILL =========
+Generated: 2026-06-16 16:56
+Consumer: fdgd (24324)
+Tariff Type: Standard Domestic
+--------------------------------------------
+Energy Charge:         Rs. 7735368.00
+Fixed Charge:          Rs.     210.00
+Solar Credit:         -Rs.    5800.00
+--------------------------------------------
+NET PAYABLE AMOUNT:    Rs. 7729778.00
+============================================
+

@@ -1,5 +1,3 @@
-import java.io.Serializable;
-
 abstract class Consumer {
     private String consumerID;
     private String name;
