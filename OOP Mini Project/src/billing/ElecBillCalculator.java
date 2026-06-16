@@ -28,8 +28,8 @@ public class ElecBillCalculator {
 
         logger.info("\nSelect Tariff Plan:");
         logger.info("1. Standard Domestic");
-        System.out.println("2. Time-of-Use (TOU)");
-        System.out.print("Choice: ");
+        logger.info("2. Time-of-Use (TOU)");
+        logger.info("Choice: ");
         int choice = scanner.nextInt();
 
         if (!ConsumerFactory.isValidChoice(choice)) {
@@ -45,14 +45,14 @@ public class ElecBillCalculator {
         double off = 0;
 
         if (choice == 1) {
-            System.out.print("Enter Total Monthly Consumption (kWh): ");
+            logger.info("Enter Total Monthly Consumption (kWh): ");
             total = scanner.nextDouble();
         } else {
-            System.out.print("Enter Day Consumption (kWh): ");
+            logger.info("Enter Day Consumption (kWh): ");
             day = scanner.nextDouble();
-            System.out.print("Enter Peak Consumption (kWh): ");
+            logger.info("Enter Peak Consumption (kWh): ");
             peak = scanner.nextDouble();
-            System.out.print("Enter Off-Peak Consumption (kWh): ");
+            logger.info("Enter Off-Peak Consumption (kWh): ");
             off = scanner.nextDouble();
         }
 
@@ -67,7 +67,7 @@ public class ElecBillCalculator {
 
         logger.info("Bill added to history. Total bills this session: " + historyManager.getBillCount());
         if (exportPath != null) {
-            logger.info("Bill exported to: " + exportPath);
+            logger.info("Bill exported to: {}", exportPath);
         } else {
             logger.info("Warning: Bill could not be exported to file.");
         }
