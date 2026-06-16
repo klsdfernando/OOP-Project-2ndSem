@@ -56,11 +56,11 @@ public class ElecBillCalculator {
         consumer = ConsumerFactory.createConsumer(choice, id, name, solar,
                 total, day, peak, off);
 
-        BillRecord record = engine.createBillRecord(consumer, rates);
-        engine.printBill(record, rates);
+        BillRecord billRecord = engine.createBillRecord(consumer, rates);
+        engine.printBill(billRecord, rates);
 
-        historyManager.addBill(record);
-        String exportPath = billExporter.export(record);
+        historyManager.addBill(billRecord);
+        String exportPath = billExporter.export(billRecord);
 
         System.out.println("Bill added to history. Total bills this session: " + historyManager.getBillCount());
         if (exportPath != null) {
