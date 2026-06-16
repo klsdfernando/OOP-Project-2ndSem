@@ -27,6 +27,11 @@ public class BillExporter {
     }
 }
 
+// Private constructor to prevent instantiation
+private BillExporter() {
+    throw new IllegalStateException("Utility class");
+}
+
 class ExportUtil {
     static String cleanName(String name) {
         return name.trim();
