@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Scanner;
 
 class StandardConsumer extends Consumer {
     private double totalConsumption;

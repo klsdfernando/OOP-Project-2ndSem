@@ -1,6 +1,3 @@
-import java.io.PrintStream;
-import java.util.*;
-
 public class ConsumerFactory {
 
     public static <E> Consumer createConsumer(int choice, String id, String name, double solar,
