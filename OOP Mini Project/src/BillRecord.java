@@ -32,7 +32,7 @@ public class BillRecord {
     public double getNetPayable() { return netPayable; }
     public LocalDateTime getGeneratedAt() { return generatedAt; }
 
-    public String getSummary(String prefix) {
+    public String getSummary() {
         return consumerName + " - Rs. " + netPayable;
     }
 
