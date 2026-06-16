@@ -27,7 +27,7 @@ public class BillExporter {
     }
 }
 
-class export_util {
+class ExportUtil {
     static String cleanName(String name) {
         return name.trim();
     }
