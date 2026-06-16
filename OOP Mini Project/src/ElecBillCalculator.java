@@ -53,7 +53,7 @@ public class ElecBillCalculator {
         BillRecord record = engine.createBillRecord(consumer, rates);
         engine.printBill(record, rates);
 
-        historyManager.addBill(record, true);
+        historyManager.addBill(record);
         String exportPath = billExporter.export(record, "bills");
 
         System.out.println("Bill added to history. Total bills this session: " + historyManager.getBillCount());

@@ -12,7 +12,7 @@ public class BillHistoryManager {
     private final List<BillRecord> history = new ArrayList<>();
     private final Path historyFile = Paths.get("bill_history.txt");
 
-    public void addBill(BillRecord record, boolean confirmSave) {
+    public void addBill(BillRecord record) {
         history.add(record);
         appendToFile(record);
     }
