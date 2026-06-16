@@ -36,7 +36,10 @@ public class ElecBillCalculator {
         }
 
         Consumer consumer = null;
-        double total = 0, day = 0, peak = 0, off = 0;
+        double total = 0;
+        double day = 0;
+        double peak = 0;
+        double off = 0;
 
         if (choice == 1) {
             System.out.print("Enter Total Monthly Consumption (kWh): ");
