@@ -11,7 +11,8 @@ class ResidentialBillingEngine implements BillingService {
         return (energyCharge + fixedCharge) - solarCredit;
     }
 
-    public <E> BillRecord createBillRecord(Consumer c, TariffRate r) {
+    public BillRecord createBillRecord(Consumer c, TariffRate r) {
+
         double energy = c.calculateEnergyCharge(r);
         double fixed = c.getFixedCharge(r);
         double solar = c.getSolarExportUnits() * r.getSolarExportRate();
