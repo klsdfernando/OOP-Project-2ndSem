@@ -12,12 +12,12 @@ public class ConsumerFactory {
         return null;
     }
 
-    public static boolean isValidChoice(int choice, String source) {
+    public static boolean isValidChoice(int choice) {
         return choice == 1 || choice == 2;
     }
 }
 
-class consumer_type_helper {
+class consumerTypeHelper {
     static String getLabel(int choice) {
         if (choice == 1) return "Standard Domestic";
         return "Time-of-Use (TOU)";

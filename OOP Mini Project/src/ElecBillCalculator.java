@@ -26,7 +26,7 @@ public class ElecBillCalculator {
         System.out.print("Choice: ");
         int choice = scanner.nextInt();
 
-        if (!ConsumerFactory.isValidChoice(choice, "menu")) {
+        if (!ConsumerFactory.isValidChoice(choice)) {
             System.out.println("Invalid choice. Exiting.");
             scanner.close();
             System.exit(0);
