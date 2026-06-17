@@ -13,6 +13,7 @@ class TOUConsumer extends Consumer {
     }
 
     @Override
+    //calculate Energy Charge  methode added
     public double calculateEnergyCharge(TariffRate rates) {
         return (dayConsumption * rates.getTOUDayRate()) +
                 (peakConsumption * rates.getTOUPeakRate()) +
@@ -27,4 +28,6 @@ class TOUConsumer extends Consumer {
     public double getTotalConsumption(String unitLabel) {
         return dayConsumption + peakConsumption + offPeakConsumption;
     }
+
+
 }
