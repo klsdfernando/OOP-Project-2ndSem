@@ -5,6 +5,7 @@ class TOUConsumer extends Consumer {
     private double peakConsumption;
     private double offPeakConsumption;
 
+    //get the costermer details
     public TOUConsumer(String id, String name, double solarExport, double day, double peak, double off) {
         super(id, name, solarExport);
         this.dayConsumption = day;
