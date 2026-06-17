@@ -1,5 +1,5 @@
 import java.util.Arrays;
-
+//calculate the bill for counsumer category time of use
 class TOUConsumer extends Consumer {
     private double dayConsumption;
     private double peakConsumption;
