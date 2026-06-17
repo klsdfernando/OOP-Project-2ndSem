@@ -11,10 +11,12 @@ class StandardConsumer extends Consumer {
 
     @Override
     public double calculateEnergyCharge(TariffRate rates) {
-        return calculateSlabCharge(totalConsumption, rates, false);
+        // Removed the 'false' argument since the parameter was deleted
+        return calculateSlabCharge(totalConsumption, rates);
     }
 
-    private double calculateSlabCharge(double units, TariffRate rates, boolean debugMode) {
+    // Removed the unused 'boolean debugMode' parameter
+    private double calculateSlabCharge(double units, TariffRate rates) {
         double charge = 0;
 
         if (units <= 60) {
