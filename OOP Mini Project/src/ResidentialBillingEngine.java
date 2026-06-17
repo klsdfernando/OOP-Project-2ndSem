@@ -1,7 +1,7 @@
 import java.util.logging.Logger;
 class ResidentialBillingEngine implements BillingService {
 
-    private static final Logger LOGGER = Logger.getLogger(ResidentialBillingEngine.class.getName());
+    private static final Logger logger = Logger.getLogger(ResidentialBillingEngine.class.getName());
 
     @Override
     public double calculateTotalBill(Consumer c, TariffRate r) {
@@ -15,6 +15,7 @@ class ResidentialBillingEngine implements BillingService {
     }
 
     public BillRecord createBillRecord(Consumer c, TariffRate r) {
+
         double energy = c.calculateEnergyCharge(r);
         double fixed = c.getFixedCharge(r);
         double solar = c.getSolarExportUnits() * r.getSolarExportRate();
@@ -30,6 +31,6 @@ class ResidentialBillingEngine implements BillingService {
     }
 
     public void printBill(BillRecord billRecord, TariffRate rates) {
-        LOGGER.info("\n" + billRecord.toFormattedString());
+        logger.info("\n" + billRecord.toFormattedString());
     }
 }
