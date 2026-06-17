@@ -1,5 +1,4 @@
 import java.util.logging.Logger;
-
 class ResidentialBillingEngine implements BillingService {
 
     private static final Logger LOGGER = Logger.getLogger(ResidentialBillingEngine.class.getName());
