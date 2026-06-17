@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 import java.util.Scanner;
-
+//calulate the bill for consumer type standed
 class StandardConsumer extends Consumer {
     private double totalConsumption;
 
