@@ -26,7 +26,7 @@ class ResidentialBillingEngine implements BillingService {
         printBill(createBillRecord(c, r), r);
     }
 
-    public void printBill(BillRecord record, TariffRate rates) {
-        System.out.println("\n" + record.toFormattedString());
+    public void printBill(BillRecord billRecord, TariffRate rates) {
+        System.out.println("\n" + billRecord.toFormattedString());
     }
 }
